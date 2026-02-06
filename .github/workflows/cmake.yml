@@ -20,12 +20,14 @@ jobs:
     runs-on: ${{ matrix.os }}
 
     steps:
+
+
     - uses: actions/checkout@v3
       with:
         submodules: recursive
 
-    - name: Setup VCPKG
-      uses: lukka/run-vcpkg@v11
+    - name: Setup Just
+      uses: extractions/setup-just@v3
 
     - name: Update Dependencies
       run: just --no-deps ci-deps
