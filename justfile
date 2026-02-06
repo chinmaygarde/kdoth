@@ -23,8 +23,11 @@ alias gen := setup
 	apt update
 	apt install -y cmake build-essential ninja-build
 
+[linux]
 @ci-deps:
 
+[windows]
+@ci-deps:
 # @test: build
 # 	ctest --output-on-failure -j --test-dir build
 
