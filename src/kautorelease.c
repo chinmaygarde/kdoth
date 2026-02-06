@@ -1,7 +1,5 @@
 #include "kautorelease.h"
 
-#include <threads.h>
-
 #include "karray.h"
 
 _Thread_local KArrayRef tPool;

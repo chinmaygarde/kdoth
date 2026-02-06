@@ -24,12 +24,10 @@
 #if K_OS_WIN
 
 #define K_NO_RETURN __declspec(noreturn)
-#define K_THREAD_LOCAL __declspec(thread)
 
 #else
 
 #define K_NO_RETURN __attribute__((noreturn))
-#define K_THREAD_LOCAL _Thread_local
 
 #endif
 
@@ -41,20 +39,20 @@
   void obj##Release(obj##Ref object); \
   K_EXTERN_C_END
 
-#define K_IMPL_OBJECT(obj)                  \
-  void obj##Retain(obj##Ref object) {       \
-    KObjectRetain(object);                  \
-  }                                         \
-  void obj##Release(obj##Ref object) {      \
-    KObjectRelease(object);                 \
-  }                                         \
-  void obj##Init(obj##Ref obj);             \
-  void obj##DeInit(obj##Ref obj);           \
-  static KClass obj##ClassDef = {           \
-      .init = (KClassInit)&obj##Init,       \
-      .deinit = (KClassDeinit)&obj##DeInit, \
-      .size = sizeof(struct obj),           \
-  };                                        \
-  obj##Ref obj##Alloc() {                   \
-    return KObjectNew(&obj##ClassDef);      \
+#define K_IMPL_OBJECT(obj)                    \
+  void obj##Retain(obj##Ref object) {         \
+    KObjectRetain(object);                    \
+  }                                           \
+  void obj##Release(obj##Ref object) {        \
+    KObjectRelease(object);                   \
+  }                                           \
+  void obj##Init(obj##Ref obj);               \
+  void obj##DeInit(obj##Ref obj);             \
+  static KClass obj##ClassDef = {             \
+      .init = (KClassInit) & obj##Init,       \
+      .deinit = (KClassDeinit) & obj##DeInit, \
+      .size = sizeof(struct obj),             \
+  };                                          \
+  obj##Ref obj##Alloc() {                     \
+    return KObjectNew(&obj##ClassDef);        \
   }
