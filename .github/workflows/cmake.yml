@@ -7,7 +7,7 @@ on:
     branches: [ "main" ]
 
 jobs:
-  host_platforms:
+  build:
     strategy:
       matrix:
         os:
@@ -20,7 +20,6 @@ jobs:
     runs-on: ${{ matrix.os }}
 
     steps:
-
 
     - uses: actions/checkout@v3
       with:
