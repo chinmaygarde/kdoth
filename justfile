@@ -23,7 +23,7 @@ alias gen := setup
 	apt update
 	apt install -y cmake build-essential ninja-build
 
-[linux]
+[macos]
 @ci-deps:
 
 [windows]
