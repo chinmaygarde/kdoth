@@ -20,8 +20,8 @@ alias gen := setup
 
 [linux]
 @ci-deps:
-	apt update
-	apt install -y cmake build-essential ninja-build
+	sudo apt update
+	sudo apt install -y cmake build-essential ninja-build
 
 [macos]
 @ci-deps:
